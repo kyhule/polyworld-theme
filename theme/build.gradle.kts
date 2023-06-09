@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.github.kyhule.polyworld.feature"
+    namespace = "com.github.kyhule.polyworld.ui.theme"
 }
 
 dependencies {
