@@ -1,5 +1,6 @@
 plugins {
     `polyworld-android-lib`
+    `polyworld-android-lib-compose`
     `polyworld-maven-publish`
 }
 
