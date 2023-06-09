@@ -1,0 +1,16 @@
+name: Pull Request
+
+on:
+  pull_request:
+    paths-ignore:
+      - '*.md'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual run'
+        required: false
+
+jobs:
+  build:
+    uses: kyhule/polyworld-workflows/.github/workflows/pre-merge.yml@95291f10a9811bfbb87098cf3a3765a2ac95919f
+    secrets: inherit
