@@ -5,12 +5,33 @@ on:
     branches:
       - main
       - 'release/**'
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Select which component of the version should be incremented'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      stage:
+        description: 'Select which stage of the release should be published'
+        required: true
+        default: 'snapshot'
+        type: choice
+        options:
+          - final
+          - snapshot
 
 jobs:
   build:
     uses: kyhule/polyworld-workflows/.github/workflows/post-merge.yml@95291f10a9811bfbb87098cf3a3765a2ac95919f
     secrets: inherit
     with:
+      version-scope: ${{ inputs.scope || vars.SCOPE }}
+      version-stage: ${{ inputs.stage || vars.STAGE }}
       android-archive-app-outputs: true
       android-archive-app-reports: true
       publish-artifacts: true
