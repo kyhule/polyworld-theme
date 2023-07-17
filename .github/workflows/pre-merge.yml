@@ -37,24 +37,36 @@ jobs:
           pwd
           ls -al
 
-#      - name: Set up Java
-#        uses: actions/setup-java@v3
-#        with:
-#          distribution: 'zulu'
-#          java-version: 17
-#
-#      - name: Set up Android
-#        uses: android-actions/setup-android@v2
-#
-#      - name: Set up Gradle
-#        uses: gradle/gradle-build-action@v2
-#        with:
-#          gradle-home-cache-cleanup: true
-#
-#      - name: Build and Test
-#        run: >
-#          ./gradlew
-#          build
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Set up Android
+        uses: android-actions/setup-android@v2
+
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-home-cache-cleanup: true
+
+      - name: Set up composite include
+        working-directory: polyworld-theme
+        run: |
+          touch .composite-include
+
+      - name: Build and Test theme
+        working-directory: polyworld-theme
+        run: >
+          ./gradlew
+          build
+
+      - name: Assemble debug app
+        working-directory: polyworld-app
+        run: >
+          ./gradlew
+          assembleDebug
 #
 #      - name: Check test output existence
 #        id: check_test_output
