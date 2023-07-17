@@ -1,4 +1,4 @@
-name: Pull Request
+name: Pre-merge
 
 on:
   pull_request:
@@ -12,5 +12,62 @@ on:
 
 jobs:
   build:
-    uses: kyhule/polyworld-workflows/.github/workflows/pre-merge.yml@95291f10a9811bfbb87098cf3a3765a2ac95919f
-    secrets: inherit
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          pwd
+          ls -al
+
+      - name: Checkout the theme repo
+        uses: actions/checkout@v3
+        with:
+          path: polyworld-theme
+
+      - run: |
+          pwd
+          ls -al
+
+      - name: Checkout the app repo
+        uses: actions/checkout@v3
+        with:
+          path: polyworld-app
+
+      - run: |
+          pwd
+          ls -al
+
+#      - name: Set up Java
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: 'zulu'
+#          java-version: 17
+#
+#      - name: Set up Android
+#        uses: android-actions/setup-android@v2
+#
+#      - name: Set up Gradle
+#        uses: gradle/gradle-build-action@v2
+#        with:
+#          gradle-home-cache-cleanup: true
+#
+#      - name: Build and Test
+#        run: >
+#          ./gradlew
+#          build
+#
+#      - name: Check test output existence
+#        id: check_test_output
+#        uses: andstor/file-existence-action@v2
+#        if: success() || failure()
+#        with:
+#          files: '**/build/test-results/**/*.xml'
+#
+#      - name: Test Report
+#        uses: dorny/test-reporter@v1
+#        if: steps.check_test_outputs.file_exists == 'true'
+#        with:
+#          name: Junit Tests
+#          path: '**/build/test-results/**/*.xml'
+#          reporter: java-junit
+#          fail-on-error: false
