@@ -34,6 +34,7 @@ jobs:
 
       - name: Checkout the app repo
         uses: actions/checkout@v3
+        repository: kyhule/polyworld-app
         with:
           path: polyworld-app
 
@@ -65,12 +66,14 @@ jobs:
         run: >
           ./gradlew
           build
+          --info
 
       - name: Assemble debug app
         working-directory: polyworld-app
         run: >
           ./gradlew
           assembleDebug
+          --info
 #
 #      - name: Check test output existence
 #        id: check_test_output
