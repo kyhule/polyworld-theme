@@ -9,17 +9,20 @@ android {
 }
 
 dependencies {
+    implementation(externalLibs.androidx.activity.compose)
     implementation(externalLibs.androidx.coreKtx)
     implementation(externalLibs.androidx.lifecycle.runtimeKtx)
-    implementation(externalLibs.androidx.activity.compose)
-    implementation(externalLibs.androidx.compose.ui)
-    implementation(externalLibs.androidx.compose.uiGraphics)
-    implementation(externalLibs.androidx.compose.uiToolingPreview)
-    implementation(externalLibs.androidx.compose.material3)
+    implementation(externalLibs.androidxComposeMaterial3.material3)
+    implementation(externalLibs.androidxComposeUi.ui)
+    implementation(externalLibs.androidxComposeUi.uiGraphics)
+    implementation(externalLibs.androidxComposeUi.uiToolingPreview)
+
+    debugImplementation(externalLibs.androidxComposeUi.uiTestManifest)
+    debugImplementation(externalLibs.androidxComposeUi.uiTooling)
+
     testImplementation(externalLibs.junit)
-    androidTestImplementation(externalLibs.androidx.test.extJunit)
+
     androidTestImplementation(externalLibs.androidx.test.espressoCore)
-    androidTestImplementation(externalLibs.androidx.compose.uiTestJunit4)
-    debugImplementation(externalLibs.androidx.compose.uiTooling)
-    debugImplementation(externalLibs.androidx.compose.uiTestManifest)
+    androidTestImplementation(externalLibs.androidx.test.extJunit)
+    androidTestImplementation(externalLibs.androidxComposeUi.uiTestJunit4)
 }

@@ -16,13 +16,13 @@ pluginManagement {
 }
 
 plugins {
-    id("com.github.kyhule.polyworld.build.settings") version "0.6.0"
+    id("com.github.kyhule.polyworld.build.settings") version "1.0.0"
 }
 
 dependencyResolutionManagement {
     versionCatalogs {
         create("externalLibs") {
-            from("com.github.kyhule.polyworld.build:polyworld-external-catalog:1.0.0")
+            from("com.github.kyhule.polyworld.build:polyworld-external-catalog:1.3.0")
         }
     }
 }
